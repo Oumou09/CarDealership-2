@@ -1,5 +1,10 @@
 package com.pluralsight.dealership;
 
+import Contract.Contract;
+import Contract.ContractDataManager;
+import Contract.LeaseContract;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +30,7 @@ public class UserInterface {
             System.out.println("7. Get all vehicles");
             System.out.println("8. Add vehicle");
             System.out.println("9. Remove vehicle");
+            System.out.println("10. Sell/Lease a vehicle");
             System.out.println("99. Quit");
 
             System.out.print("Enter your choice: ");
@@ -57,6 +63,8 @@ public class UserInterface {
                     break;
                 case "9":
                     processRemoveVehicleRequest();
+                    break;
+                case "10": processSellLeaseVehicleRequest(Contract);
                     break;
                 case "99":
                     quit = true;
@@ -193,4 +201,50 @@ public class UserInterface {
         }
     }
 
-}
+    public void processSellLeaseVehicleRequest(List<Contract> contracts){
+        ContractDataManager contractDataManager = new ContractDataManager();
+        contractDataManager.saveContracts(contracts);
+
+        int vin = Integer.parseInt();
+            Vehicle selectedVehicle = dealership.getPhone(vin);
+            if (selectedVehicle == null) {
+                System.out.println("Vehicle not found");
+                return;
+            }
+            if (selectedVehicle.getYear() < 2022) {
+                System.out.println("Vehicle is too old to be leased. Continue with sale only.");
+            }
+            System.out.print("Do yo want to (1) sell or (2) Lease?: ");
+            String option = scanner.nextLine();
+            System.out.println("Customer name: ");
+            String name = scanner.nextLine();
+            System.out.println("Customer email: ");
+            String email = scanner.nextLine();
+            String date = LocalDate.now().toString();
+            Contract contract = null;
+            if (option.equals("1") || selectedVehicle.getYear() < 2022) {
+                System.out.println("Finance? (yes/no): ");
+
+                boolean finance = scanner.nextLine().equalsIgnoreCase("yes");
+
+                contract = SalesContract(name, date, email, selectedVehicle, finance);
+            } else if (option.equals("2")) {
+                if (selectedVehicle.getYear() <= LocalDate.now().getYear() - 3) {
+                    System.out.println("Vehicle is too old to be leased.");
+                    return;
+                }
+                contract = new LeaseContract(date, name, email, selectedVehicle);
+            } else {
+                System.out.println("Invalid option.");
+                return;
+            }
+            if (contract != null){
+                contractFileManager.saveContract(contract);
+                dealership.removeVehicle(vin);
+            System.out.println("Contract saved successfully");
+            }
+    }
+
+    }
+
+
