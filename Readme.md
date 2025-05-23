@@ -1,71 +1,73 @@
-# Project Title
+# Car Dealership 2 
 
 ## Description of the Project
+This Java console application is an extension of a car dealership management system. In this phase, we added Sales and Lease functionality to simulate real dealership operations.
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+Purpose: Allow a dealership user (salesperson or manager) to sell or lease a vehicle to a customer, generate a contract, and automatically remove that vehicle from inventory.
 
-![Class Diagram](path/to/your/class_diagram.png)
+Intended Users: Dealership employees using a command-line terminal to manage vehicle transactions.
+
+Main Features:View and search vehicle inventory
+
+- Sell or lease a vehicle based on customer input
+- Generate and save a SalesContract or LeaseContract
+- Automatically remove sold/leased vehicles from inventory
+- Persist contracts and inventory to files
+
+
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
+List the user stories that guided the development of your application. 
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a user, I want contracts to store basic customer and vehicle info so that all transactions are tracked consistently.
+- As a user, I want the system to calculate total price and monthly payments based on the type of contract so that I always see the right financial details.
 
 ## Setup
+Prerequisites
+IntelliJ IDEA
+Java SDK (JDK 17 or later)
 
-Instructions on how to set up and run the project using IntelliJ IDEA.
+Running the Application in IntelliJ
+Open IntelliJ IDEA.
+Select Open and choose your Workshop 5 project folder.
+Allow the IDE to index and set up the project.
+Locate the main file (Program.java or similar).
+Right-click and select Run to start the dealership CLI.
 
-### Prerequisites
+Technologies Used
+Java 17+
+IntelliJ IDEA Community Edition
+Plain text files for contract and inventory storage
 
-- IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
-- Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
+Core Classes
+Contract (abstract): Base class for all contracts
+SalesContract: Adds finance, fees, and tax logic
+LeaseContract: Handles lease-specific pricing and vehicle age check
+ContractDataManager: Saves contracts to a file
+Dealership / Vehicle: Manage vehicle data and list
+UserInterface: Updated to support contract creation and vehicle removal
 
-### Running the Application in IntelliJ
-
-Follow these steps to get your application running within IntelliJ IDEA:
-
-1. Open IntelliJ IDEA.
-2. Select "Open" and navigate to the directory where you cloned or downloaded the project.
-3. After the project opens, wait for IntelliJ to index the files and set up the project.
-4. Find the main class with the `public static void main(String[] args)` method.
-5. Right-click on the file and select 'Run 'YourMainClassName.main()'' to start the application.
-
-## Technologies Used
-
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
-
-## Demo
-
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
-
+#
 ## Future Work
+Future Enhancements
+Load and display saved contract history
 
-Outline potential future enhancements or functionalities you might consider adding:
+Support for editing or canceling contracts
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+Improved user input validation and formatting
 
-## Resources
+Integrate with a simple database for persistence
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
+Resources
+Workbook 5: Inheritance and Polymorphism in Java
+JavaDocs for ArrayList, Scanner, LocalDate
+Java File I/O (Oracle)
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+Oumou Diallo – Developer 
 
-## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+Thanks to Raymond Maroun and the LearnToCode team for the awesome hands-on project design!
 
-## Thanks
+Hat tip to IntelliJ's autocomplete — a silent hero in every Java journey.
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
- 
