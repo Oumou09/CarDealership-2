@@ -67,7 +67,6 @@ Java File I/O (Oracle)
 Oumou Diallo – Developer 
 
 
-Thanks to Raymond Maroun and the LearnToCode team for the awesome hands-on project design!
+Thanks to Raymond Maroun and my classmates for all the help.
 
-Hat tip to IntelliJ's autocomplete — a silent hero in every Java journey.
 
